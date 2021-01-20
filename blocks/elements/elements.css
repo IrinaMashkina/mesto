@@ -5,4 +5,18 @@
     row-gap: 20px;
     column-gap: 17px;
     grid-template-columns: repeat(3, 1fr);
+    box-sizing: border-box;
+}
+
+@media (max-width:1000px) {
+    .elements {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 810px;
+    }
+}
+
+@media (max-width:500px) {
+    .elements {
+        display: block;
+    }
 }
