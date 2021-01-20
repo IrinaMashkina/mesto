@@ -1,0 +1,10 @@
+.profile {
+    box-sizing: border-box;
+    max-width: 1280px;
+    min-width: 320px;
+    padding: 40px 200px 51px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
