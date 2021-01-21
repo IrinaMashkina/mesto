@@ -1,3 +1,11 @@
 .profile__information {
     display: flex;
 }
+
+@media screen and (max-width:720px) {
+    .profile__information {
+        flex-direction: column;
+        margin-bottom: 36px;
+        margin-top: 36px;
+    }
+}

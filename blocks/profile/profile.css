@@ -6,4 +6,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+}
+
+@media screen and (max-width:720px) {
+    .profile {
+        flex-direction: column;
+        padding-top: 42px;
+    }
 }

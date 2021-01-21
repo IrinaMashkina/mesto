@@ -2,3 +2,10 @@
     display: flex;
     margin-bottom: 16px;
 }
+
+
+@media screen and (max-width:720px) {
+    .profile__wrapper {
+        margin-bottom: 14px;
+    }
+}

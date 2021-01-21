@@ -11,3 +11,9 @@
     background-repeat: no-repeat;
     background-color: inherit;
 } 
+
+@media screen and (max-width:720px) {
+    .profile__add-button {
+        width: 100%;
+    }
+}
