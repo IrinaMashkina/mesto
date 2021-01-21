@@ -2,20 +2,27 @@
     max-width: 880px;
     margin: 0 auto;
     display: grid;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     row-gap: 20px;
     column-gap: 17px;
     grid-template-columns: repeat(3, 1fr);
-    box-sizing: border-box;
-}
+    grid-template-rows: repeat(2, 1fr);
+    
 
-@media (max-width:1000px) {
+}
+    
+
+@media (max-width:934px) {
     .elements {
+        max-width: 680px;
         grid-template-columns: repeat(2, 1fr);
-        max-width: 810px;
+        grid-template-rows: repeat(3, 1fr);
     }
 }
 
-@media (max-width:500px) {
+@media (max-width:640px) {
     .elements {
         display: block;
     }

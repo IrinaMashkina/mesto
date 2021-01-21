@@ -7,12 +7,12 @@
     line-height: 1.21;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;}
-    /* max-width: 210px;
-} */
-/* 
-@media (max-width:1000px) {
+    overflow: hidden;
+    max-width: 210px;
+} 
+
+@media (max-width:640px) {
     .card__title {
-        max-width: 300px;
+        max-width: 100%;
     }
-} */
+}
