@@ -1,0 +1,12 @@
+.popup__button {
+    width: 358px;
+    min-height: 50px;
+    background-color: #000000;
+    border-radius: 2px;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.22;
+    border: solid 1px rebeccapurple;
+    box-sizing: border-box;
+}
