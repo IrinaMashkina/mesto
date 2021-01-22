@@ -38,6 +38,12 @@
     transform: rotate(-45deg);
 }
 
+.popup__container:hover::after,
+.popup__container:hover::before {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
 @media (max-width:640px) {
     .popup__container {
         width: 282px;

@@ -4,3 +4,8 @@
     margin-left:10px;
     
 }
+
+.card__like:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}

@@ -9,6 +9,12 @@
     line-height: 1.22;
     box-sizing: border-box;
 }
+
+.popup__button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
 @media (max-width:640px) {
     .popup__button {
         font-size: 14px;
