@@ -1,4 +1,5 @@
-.popup__edit-form {
+
+.popup__container {
     position: relative;
     margin: auto;
     width: 430px;
@@ -13,7 +14,7 @@
     box-sizing: border-box;
 }
 
-.popup__edit-form::after {
+.popup__container::after {
     content:" ";
     position: absolute;
     z-index: 2;
@@ -25,7 +26,7 @@
     transform: rotate(45deg);
 }
 
-.popup__edit-form::before {
+.popup__container::before {
     content:" ";
     position: absolute;
     z-index: 2;
