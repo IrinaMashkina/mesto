@@ -14,50 +14,11 @@
     box-sizing: border-box;
 }
 
-.popup__container::after {
-    content:" ";
-    position: absolute;
-    z-index: 2;
-    top: -40px;
-    left: 450px;
-    background-color: #FFFFFF;
-    width: 4px;
-    height: 40px;
-    transform: rotate(45deg);
-}
-
-.popup__container::before {
-    content:" ";
-    position: absolute;
-    z-index: 2;
-    top: -40px;
-    left: 450px;
-    background-color: #FFFFFF;
-    width: 4px;
-    height: 40px;
-    transform: rotate(-45deg);
-}
-
-.popup__container:hover::after,
-.popup__container:hover::before {
-    opacity: 0.6;
-    cursor: pointer;
-}
-
 @media (max-width:640px) {
     .popup__container {
         width: 282px;
         min-height: 322px;
         padding: 25px 22px;
         
-    }
-    .popup__container::after {
-        height: 26px;
-        left: 260px;
-    }
-    .popup__container::before {
-        height: 26px;
-        left: 260px;
-    }
-
+    } 
 }
