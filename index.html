@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <meta charset="UTF-8">
   <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
                   <div class="profile__info">
                       <div class="profile__wrapper">
                         <p class="profile__name">Жак-Ив Кусто</p>
-                        <img src="./images/edit-button.svg" alt="" class="profile__edit-button">
+                        <img src="./images/edit-button.svg" alt="Кнопка открытия попапа." class="profile__edit-button">
                       </div>
                       <p class="profile__profession">Исследователь океана</p>
                   </div>
@@ -34,50 +35,50 @@
             <section class="elements">
 
                 <figure class="card">
-                    <img src="./images/karachevsk.png" alt="" class="card__image">
+                    <img src="./images/karachevsk.png" alt="Карачаевск." class="card__image">
                     <figcaption class="card__caption">
                         <p class="card__title">Карачаевск</p>
-                        <img src="./images/like.svg" alt="" class="card__like">
+                        <img src="./images/like.svg" alt="Кнопка нравится." class="card__like">
                     </figcaption>
                 </figure>
 
                 <figure class="card">
-                    <img src="./images/elbrus.png" alt="" class="card__image">
+                    <img src="./images/elbrus.png" alt="Гора Эльбрус." class="card__image">
                     <figcaption class="card__caption">
                         <p class="card__title">Гора Эльбрус</p>
-                        <img src="./images/like.svg" alt="" class="card__like">
+                        <img src="./images/like.svg" alt="Кнопка нравится." class="card__like">
                     </figcaption>
                 </figure>
 
                 <figure class="card">
-                    <img src="./images/dombai.png" alt="" class="card__image">
+                    <img src="./images/dombai.png" alt="Домбай." class="card__image">
                     <figcaption class="card__caption">
                         <p class="card__title">Домбай</p>
-                        <img src="./images/like.svg" alt="" class="card__like">
+                        <img src="./images/like.svg" alt="Кнопка нравится." class="card__like">
                     </figcaption>
                 </figure>
 
                 <figure class="card">
-                    <img src="./images/elbrus.png" alt="" class="card__image">
+                    <img src="./images/elbrus.png" alt="Гора Эльбрус." class="card__image">
                     <figcaption class="card__caption">
                         <p class="card__title">Гора Эльбрус</p>
-                        <img src="./images/like.svg" alt="" class="card__like">
+                        <img src="./images/like.svg" alt="Кнопка нравится." class="card__like">
                     </figcaption>
                 </figure>
 
                 <figure class="card">
-                    <img src="./images/dombai.png" alt="" class="card__image">
+                    <img src="./images/dombai.png" alt="Домбай." class="card__image">
                     <figcaption class="card__caption">
                         <p class="card__title">Домбай</p>
-                        <img src="./images/like.svg" alt="" class="card__like">
+                        <img src="./images/like.svg" alt="Кнопка нравится." class="card__like">
                     </figcaption>
                 </figure>
 
                 <figure class="card">
-                    <img src="./images/karachevsk.png" alt="" class="card__image">
+                    <img src="./images/karachevsk.png" alt="Карачаево-Черкессия." class="card__image">
                     <figcaption class="card__caption">
                         <p class="card__title">Карачаево-Черкессия</p>
-                        <img src="./images/like.svg" alt="" class="card__like">
+                        <img src="./images/like.svg" alt="Кнопка нравится." class="card__like">
                     </figcaption>
                 </figure>
             </section>
@@ -85,8 +86,8 @@
             <section class="popup">
                 <form class="popup__container">
                     <p class="popup__title">Редактировать профиль</p>
-                    <input class="popup__name" type="text" value="Жак-Ив Кусто"/>
-                    <input class="popup__job" type="text" value="Исследователь океана"/>
+                    <input class="popup__name" name = 'name' type="text" value="Жак-Ив Кусто"/>
+                    <input class="popup__job" name='job' type="text" value="Исследователь океана"/>
                     <button class="popup__button" type="submit">Сохранить</button>
                     <img class="popup__close" alt="Кнопка закрытия попапа." src="./images/close-icon.svg">
                 </form>
