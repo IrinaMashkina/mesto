@@ -1,23 +1,24 @@
 .profile__edit-button {
-    background-color: inherit;
-    border: 1px solid #FFFFFF;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 24px;
-    height: 24px;
-    -ms-flex-item-align: center;
-        align-self: center;
+  background-color: inherit;
+  border: 1px solid #ffffff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 24px;
+  height: 24px;
+  -ms-flex-item-align: center;
+  align-self: center;
 }
 
 .profile__edit-button:hover {
-        cursor: pointer;
+  cursor: pointer;
 }
-@media screen and (max-width:720px) {
-    .profile__edit-button {
-        width: 18px;
-        height: 18px;
-    }
+
+@media screen and (max-width: 720px) {
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+  }
 }
