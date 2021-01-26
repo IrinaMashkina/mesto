@@ -1,13 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки">
   <meta name="author" content="Ирина Машкина">
+  <link rel="stylesheet" href="./pages/index.css">  
 </head>
+
 <body>
     <div class="page">
         <header class="header">
@@ -22,81 +25,85 @@
                   <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
                   <div class="profile__info">
                       <div class="profile__wrapper">
-                        <p class="profile__name">Жак-Ив Кусто</p>
-                        <img src="./images/edit-button.svg" alt="Кнопка открытия попапа." class="profile__edit-button">
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <button type="button" aria-label="Кнопка открытия окна редактирования профиля." class="profile__edit-button">
+                            <img class="profile__edit-button-img" src="./images/edit-button-img.png" alt="Кнопка открытия попапа.">
+                        </button>
                       </div>
                       <p class="profile__profession">Исследователь океана</p>
                   </div>
                 </div>
-                <button class="profile__add-button"></button>
+                <button aria-label="Кнопка добавления фотографий." type="button" class="profile__add-button"></button>
             </section>
 
 
             <section class="elements">
 
                 <figure class="card">
-                    <img src="./images/karachevsk.png" alt="Карачаевск." class="card__image">
+                    <img src="./images/karachaevsk.jpg" alt="Карачаевск." class="card__image">
                     <figcaption class="card__caption">
-                        <p class="card__title">Карачаевск</p>
-                        <img src="./images/like.svg" alt="Кнопка нравится." class="card__like">
+                        <h2 class="card__title">Карачаевск</h2>
+                        <button aria-label="Кнопка нравится." type="button" class="card__like"></button>   
                     </figcaption>
                 </figure>
 
                 <figure class="card">
-                    <img src="./images/elbrus.png" alt="Гора Эльбрус." class="card__image">
+                    <img src="./images/elbrus.jpg" alt="Гора Эльбрус." class="card__image">
                     <figcaption class="card__caption">
-                        <p class="card__title">Гора Эльбрус</p>
-                        <img src="./images/like.svg" alt="Кнопка нравится." class="card__like">
+                        <h2 class="card__title">Гора Эльбрус</h2>
+                        <button aria-label="Кнопка нравится." type="button" class="card__like"></button>    
                     </figcaption>
                 </figure>
 
                 <figure class="card">
-                    <img src="./images/dombai.png" alt="Домбай." class="card__image">
+                    <img src="./images/dombai.jpg" alt="Домбай." class="card__image">
                     <figcaption class="card__caption">
-                        <p class="card__title">Домбай</p>
-                        <img src="./images/like.svg" alt="Кнопка нравится." class="card__like">
+                        <h2 class="card__title">Домбай</h2>
+                        <button aria-label="Кнопка нравится." type="button" class="card__like"></button>    
                     </figcaption>
                 </figure>
 
                 <figure class="card">
-                    <img src="./images/elbrus.png" alt="Гора Эльбрус." class="card__image">
+                    <img src="./images/elbrus.jpg" alt="Гора Эльбрус." class="card__image">
                     <figcaption class="card__caption">
-                        <p class="card__title">Гора Эльбрус</p>
-                        <img src="./images/like.svg" alt="Кнопка нравится." class="card__like">
+                        <h2 class="card__title">Гора Эльбрус</h2>
+                        <button aria-label="Кнопка нравится." type="button" class="card__like"></button>    
                     </figcaption>
                 </figure>
 
                 <figure class="card">
-                    <img src="./images/dombai.png" alt="Домбай." class="card__image">
+                    <img src="./images/dombai.jpg" alt="Домбай." class="card__image">
                     <figcaption class="card__caption">
-                        <p class="card__title">Домбай</p>
-                        <img src="./images/like.svg" alt="Кнопка нравится." class="card__like">
+                        <h2 class="card__title">Домбай</h2>
+                        <button aria-label="Кнопка нравится." type="button" class="card__like"></button>    
                     </figcaption>
                 </figure>
 
                 <figure class="card">
-                    <img src="./images/karachevsk.png" alt="Карачаево-Черкессия." class="card__image">
+                    <img src="./images/karachaevsk.jpg" alt="Карачаево-Черкессия." class="card__image">
                     <figcaption class="card__caption">
-                        <p class="card__title">Карачаево-Черкессия</p>
-                        <img src="./images/like.svg" alt="Кнопка нравится." class="card__like">
+                        <h2 class="card__title">Карачаево-Черкессия</h2>
+                        <button aria-label="Кнопка нравится." type="button" class="card__like"></button>    
                     </figcaption>
                 </figure>
             </section>
 
-            <section class="popup">
-                <form class="popup__container">
-                    <p class="popup__title">Редактировать профиль</p>
-                    <input class="popup__name" name = 'name' type="text" value="Жак-Ив Кусто"/>
-                    <input class="popup__job" name='job' type="text" value="Исследователь океана"/>
-                    <button class="popup__button" type="submit">Сохранить</button>
-                    <img class="popup__close" alt="Кнопка закрытия попапа." src="./images/close-icon.svg">
+            <section class="popup popup_opened">
+                <form name="edit-form" class="popup__container">
+                    <h2 class="popup__title">Редактировать профиль</h2>
+                    <input class="popup__input popup__input_type_name" name ="name" type="text" value=""/>
+                    <input class="popup__input popup__input_type_job" name="job" type="text" value=""/>
+                    <button class="popup__save-button" type="submit">Сохранить</button>
+                    <button class="popup__close-button" type="button" aria-label="Закрыть"></button> 
                 </form>
                 
             </section>
             
         </main>
 
-        <footer class="footer">© 2020 Mesto Russia</footer>
+        <footer class="footer">
+            <p class="footer__text">© 2020 Mesto Russia</p>
+        </footer>
     </div>
 <script src="./script/script.js"></script>   
 </body>
