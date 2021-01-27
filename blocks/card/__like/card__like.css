@@ -1,7 +1,7 @@
 .card__like {
   background-image: url(../../../images/like.svg);
   background-size: 100%;
-  background-color: inherit;
+  background-color: transparent;
   width: 22px;
   height: 19px;
   margin-left: 10px;

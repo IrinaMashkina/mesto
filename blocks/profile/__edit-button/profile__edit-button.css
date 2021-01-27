@@ -1,9 +1,9 @@
 .profile__edit-button {
-  background-image: url(../../../images/edit-button-img.png);
+  background-image: url(../../../images/edit-button.png);
   background-size: 10px 10px;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: inherit;
+  background-color: transparent;
   border: 1px solid #ffffff;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
