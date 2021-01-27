@@ -4,16 +4,24 @@
   font-size: 18px;
   line-height: 1.21;
   font-weight: 400;
+  max-width: 400px;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
+@media screen and (max-width: 900px) {
+  .profile__profession {
+    text-align: center;
+    max-width: 300px;
+  }
+}
+
 @media screen and (max-width: 720px) {
   .profile__profession {
-    margin: 0 auto;
     font-size: 14px;
-    text-align: center;
+    max-width: calc(100vw - 50px);
+    margin: 0 auto;
   }
 }

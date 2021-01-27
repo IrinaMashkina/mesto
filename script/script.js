@@ -1,46 +1,39 @@
+// Находим попап
 let formElement = document.querySelector('.popup');
 
+// Находим кнопки открытия и закрытия попапа
 let editButton = document.querySelector('.profile__edit-button');
-let popupClose = document.querySelector('.popup__close');
+let closeButton = document.querySelector('.popup__close-button');
 
-let nameInput = formElement.querySelector(".popup__name");
-let jobInput = formElement.querySelector(".popup__job");
+// Находим формы ввода имени и "о себе"
+let nameInput = formElement.querySelector(".popup__input_type_name");
+let jobInput = formElement.querySelector(".popup__input_type_job");
 
+// Находим на главной странице секцию Профиль, где меняются "Имя" и "О себе"
 let profileName = document.querySelector('.profile__name');
 let profileJob = document.querySelector('.profile__profession');
 
-let nameInputValue = nameInput.value;
-let jobInputValue = jobInput.value;
-
-
-editButton.addEventListener('click', function() {
+// Функция открытия попапа
+function openPopup() {
     formElement.classList.add('popup_opened');
     nameInput.value=profileName.textContent;
     jobInput.value=profileJob.textContent;
-    });    
-    
+    };
 
-popupClose.addEventListener('click', function() {
-    formElement.classList.remove('popup_opened');      
-    });
+// Функция закрытия попапа    
+function closePopup() {
+    formElement.classList.remove('popup_opened');   
+};
 
-
+// Функция "сохранить изменения"
 function formSubmitHandler (evt) {
     evt.preventDefault(); 
-    let nameInput = formElement.querySelector('.popup__name');
-    let nameInputValue = nameInput.value;
-    
-    let jobInput = formElement.querySelector('.popup__job');
-    let jobInputValue = jobInput.value;
-    
-    let profileName = document.querySelector('.profile__name');
-    let profileJob = document.querySelector('.profile__profession');
-
-    profileName.textContent = nameInputValue;
-    profileJob.textContent = jobInputValue;
-    
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
     formElement.classList.remove('popup_opened');
+};
 
-}
 
+editButton.addEventListener('click', openPopup);
+closeButton.addEventListener('click', closePopup);
 formElement.addEventListener('submit', formSubmitHandler); 
