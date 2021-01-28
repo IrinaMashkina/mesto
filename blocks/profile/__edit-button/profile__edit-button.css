@@ -16,6 +16,8 @@
 
 .profile__edit-button:hover {
   cursor: pointer;
+  /* По фигме не могу найти прозрачность для этого элемента. Cтавлю такую же, как у других похожих кнопок */
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 720px) {

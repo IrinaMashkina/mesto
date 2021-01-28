@@ -30,7 +30,7 @@ function formSubmitHandler (evt) {
     evt.preventDefault(); 
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    formElement.classList.remove('popup_opened');
+    closePopup();
 };
 
 
