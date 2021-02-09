@@ -36,13 +36,24 @@
 
 
             <section class="elements">
-
-                <figure class="card">
+                <template class="template">
+                    <figure class="card">
+                        <img src="" alt="" class="card__image">
+                        <figcaption class="card__caption">
+                            <h2 class="card__title"></h2>
+                            <button aria-label="Кнопка нравится." type="button" class="card__like"></button>   
+                        </figcaption>
+                        <button aria-label="Удалить карточку." type="button" class="card__delete"></button>
+                    </figure>
+                </template>
+            </section>
+                <!-- <figure class="card">
                     <img src="./images/karachaevsk.jpg" alt="Карачаевск." class="card__image">
                     <figcaption class="card__caption">
                         <h2 class="card__title">Карачаевск</h2>
                         <button aria-label="Кнопка нравится." type="button" class="card__like"></button>   
                     </figcaption>
+                    <button aria-label="Удалить карточку." type="button" class="card__delete"></button>
                 </figure>
 
                 <figure class="card">
@@ -51,6 +62,7 @@
                         <h2 class="card__title">Гора Эльбрус</h2>
                         <button aria-label="Кнопка нравится." type="button" class="card__like"></button>    
                     </figcaption>
+                    <button aria-label="Удалить карточку." type="button" class="card__delete"></button>
                 </figure>
 
                 <figure class="card">
@@ -59,6 +71,7 @@
                         <h2 class="card__title">Домбай</h2>
                         <button aria-label="Кнопка нравится." type="button" class="card__like"></button>    
                     </figcaption>
+                    <button aria-label="Удалить карточку." type="button" class="card__delete"></button>
                 </figure>
 
                 <figure class="card">
@@ -67,6 +80,7 @@
                         <h2 class="card__title">Гора Эльбрус</h2>
                         <button aria-label="Кнопка нравится." type="button" class="card__like"></button>    
                     </figcaption>
+                    <button aria-label="Удалить карточку." type="button" class="card__delete"></button>
                 </figure>
 
                 <figure class="card">
@@ -75,6 +89,7 @@
                         <h2 class="card__title">Домбай</h2>
                         <button aria-label="Кнопка нравится." type="button" class="card__like"></button>    
                     </figcaption>
+                    <button aria-label="Удалить карточку." type="button" class="card__delete"></button>
                 </figure>
 
                 <figure class="card">
@@ -83,18 +98,28 @@
                         <h2 class="card__title">Карачаево-Черкессия</h2>
                         <button aria-label="Кнопка нравится." type="button" class="card__like"></button>    
                     </figcaption>
-                </figure>
-            </section>
+                    <button aria-label="Удалить карточку." type="button" class="card__delete"></button>
+                </figure> -->
+           
 
-            <section class="popup">
+            <section class="popup popup__edit">
                 <form name="edit-form" class="popup__container">
                     <h2 class="popup__title">Редактировать профиль</h2>
                     <input class="popup__input popup__input_type_name" name ="name" type="text" value=""/>
                     <input class="popup__input popup__input_type_job" name="job" type="text" value=""/>
-                    <button class="popup__save-button" type="submit">Сохранить</button>
-                    <button class="popup__close-button" type="button" aria-label="Закрыть"></button> 
+                    <button class="popup__submit popup__save-button" type="submit">Сохранить</button>
+                    <button class="popup__close-button popup__edit-close" type="button" aria-label="Закрыть"></button> 
                 </form>
-                
+            </section>
+
+            <section class="popup popup__card-add">
+                <form name="add-form" class="popup__container">
+                    <h2 class="popup__title">Новое место</h2>
+                    <input class="popup__input popup__input_type_title" name ="caption" type="text" value="" placeholder="Название"/>
+                    <input class="popup__input popup__input_type_link" name="url" type="text" value="" placeholder="Ссылка на картинку"/>
+                    <button class="popup__submit popup__new-card-button" type="submit">Создать</button>
+                    <button class="popup__close-button popup__add-close" type="button" aria-label="Закрыть"></button> 
+                </form>
             </section>
             
         </main>
