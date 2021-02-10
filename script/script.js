@@ -59,19 +59,19 @@ renderCard();
 
 
 // Находим попапы
-let formElement = document.querySelector('.popup');
+const formElement = document.querySelector('.popup');
 
 
 // ПОПАП РЕДАКТИРОВАНИЯ ИНФОРМАЦИИ О ПОЛЬЗОВАТЕЛЕ
-let popupEdit = document.querySelector('.popup__edit');
-let editButton = document.querySelector('.profile__edit-button');
-let closeEditButton = document.querySelector('.popup__edit-close');
+const popupEdit = document.querySelector('.popup__edit');
+const editButton = document.querySelector('.profile__edit-button');
+const closeEditButton = document.querySelector('.popup__edit-close');
 // Находим формы ввода имени и "о себе"
-let nameInput = formElement.querySelector(".popup__input_type_name");
-let jobInput = formElement.querySelector(".popup__input_type_job");
+const nameInput = formElement.querySelector(".popup__input_type_name");
+const jobInput = formElement.querySelector(".popup__input_type_job");
 // Находим на главной странице секцию Профиль, где меняются "Имя" и "О себе"
-let profileName = document.querySelector('.profile__name');
-let profileJob = document.querySelector('.profile__profession');
+const profileName = document.querySelector('.profile__name');
+const profileJob = document.querySelector('.profile__profession');
 // Функция открытия попапа редактирования профиля
 function openEditPopup() {
     popupEdit.classList.add('popup_opened');
@@ -96,12 +96,12 @@ function formSubmitHandler (evt) {
 
 
 // ПОПАП ДОБАВЛЕНИЯ КАРТОЧЕК
-let popupCardAdd = document.querySelector('.popup__card-add');
-let addButton = document.querySelector('.profile__add-button');
-let closeAddButton = document.querySelector('.popup__add-close');
+const popupCardAdd = document.querySelector('.popup__card-add');
+const addButton = document.querySelector('.profile__add-button');
+const closeAddButton = document.querySelector('.popup__add-close');
 // Находим формы ввода данных карточки
-let cardTitleInput = document.querySelector(".popup__input_type_title");
-let cardLinkInput = document.querySelector(".popup__input_type_link");
+const cardTitleInput = document.querySelector(".popup__input_type_title");
+const cardLinkInput = document.querySelector(".popup__input_type_link");
 //Функция открытия попапа добавления новых карточек
 function openCardAddPopup() {
     popupCardAdd.classList.add('popup_opened');
@@ -141,8 +141,8 @@ function likeActive(evt) {
 
 
 // ПОПАП УВЕЛИЧЕНИЯ ФОТО
-let popupPic = document.querySelector('.popup-pic');
-let closePicButton = document.querySelector('.popup-pic__close')
+const popupPic = document.querySelector('.popup-pic');
+const closePicButton = document.querySelector('.popup-pic__close')
 function clickImage(event) {
   const eventTarget = event.target;
   const closestCard = eventTarget.closest('.card');
