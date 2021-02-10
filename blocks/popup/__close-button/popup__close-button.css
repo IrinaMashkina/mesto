@@ -7,7 +7,8 @@
   position: absolute;
   z-index: 2;
   top: -28.3px;
-  left: 450px;
+  /* left: 450px; */
+  right: -28.3px;
   width: 28.3px;
   height: 28.3px;
 }
@@ -21,6 +22,7 @@
   .popup__close-button {
     height: 18.4px;
     width: 18.4px;
-    left: 260px;
+    right: 0;
+    top: - 13px;
   }
 }

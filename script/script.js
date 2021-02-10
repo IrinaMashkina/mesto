@@ -1,19 +1,3 @@
-// Находим попапы
-let formElement = document.querySelector('.popup');
-let popupEdit = document.querySelector('.popup__edit');
-let popupCardAdd = document.querySelector('.popup__card-add');
-
-// Находим кнопки открытия и закрытия попапа
-let editButton = document.querySelector('.profile__edit-button');
-let addButton = document.querySelector('.profile__add-button');
-let closeEditButton = document.querySelector('.popup__edit-close');
-let closeAddButton = document.querySelector('.popup__add-close');
-
-
-
-
-
-
 // СОЗДАНИЕ КАРТОЧЕК ИЗ JS
 // //Массив с карточками
 
@@ -46,6 +30,7 @@ const initialCards = [
 // Находим template
 const cardTemplate = document.querySelector('.template').content;
 const elements = document.querySelector('.elements');
+
 // Создаём  карточки
 function getCard(item) {
     const newCard = cardTemplate.querySelector('.card').cloneNode(true);
@@ -58,8 +43,11 @@ function getCard(item) {
     deleteButton.addEventListener('click', handleDelete);
     const likeButton = newCard.querySelector('.card__like');
     likeButton.addEventListener('click', likeActive);
-    return newCard;
+    const imageBig = newCard.querySelector('.card__image');
+    imageBig.addEventListener('click', clickImage);
+    return newCard;  
 }
+
 // Добавляем карточки в секцию elements
 function renderCard() {
     const html = initialCards.map(getCard);
@@ -70,8 +58,14 @@ renderCard();
 
 
 
-// ПОПАП РЕДАКТИРОВАНИЯ ИНФОРМАЦИИ О ПОЛЬЗОВАТЕЛЕ
+// Находим попапы
+let formElement = document.querySelector('.popup');
 
+
+// ПОПАП РЕДАКТИРОВАНИЯ ИНФОРМАЦИИ О ПОЛЬЗОВАТЕЛЕ
+let popupEdit = document.querySelector('.popup__edit');
+let editButton = document.querySelector('.profile__edit-button');
+let closeEditButton = document.querySelector('.popup__edit-close');
 // Находим формы ввода имени и "о себе"
 let nameInput = formElement.querySelector(".popup__input_type_name");
 let jobInput = formElement.querySelector(".popup__input_type_job");
@@ -86,8 +80,8 @@ function openEditPopup() {
 };
 // Функция закрытия попапа   редактирования профиля 
 function closeEditPopup() {
-    popupEdit.classList.remove('popup_opened');  
-    console.log('Закрываем попап');
+  popupEdit.classList.remove('popup_opened');  
+    
 };
 // Функция "сохранить изменения"
 function formSubmitHandler (evt) {
@@ -102,6 +96,9 @@ function formSubmitHandler (evt) {
 
 
 // ПОПАП ДОБАВЛЕНИЯ КАРТОЧЕК
+let popupCardAdd = document.querySelector('.popup__card-add');
+let addButton = document.querySelector('.profile__add-button');
+let closeAddButton = document.querySelector('.popup__add-close');
 // Находим формы ввода данных карточки
 let cardTitleInput = document.querySelector(".popup__input_type_title");
 let cardLinkInput = document.querySelector(".popup__input_type_link");
@@ -126,19 +123,14 @@ function saveNewCard (evt) {
   closeAddPopup();
 };
 
-// УДАЛЯЕМ КАРТОЧКИ 
-// Находим кнопку Удалить
-
+// Удаление карточки
 function handleDelete(event) {
   const eventTarget = event.target;
   const targetItem = eventTarget.closest('.card');
   targetItem.remove();
 }
 
-//Находим кнопку лайка
-
-
-//Лайк
+//Функция Лайк
 function likeActive(evt) {
     const eventTarget = evt.target;
     const targetLike = eventTarget.closest('.card__like');
@@ -147,12 +139,37 @@ function likeActive(evt) {
 };
 
 
+
+// ПОПАП УВЕЛИЧЕНИЯ ФОТО
+let popupPic = document.querySelector('.popup-pic');
+let closePicButton = document.querySelector('.popup-pic__close')
+function clickImage(event) {
+  const eventTarget = event.target;
+  const closestCard = eventTarget.closest('.card');
+  const closestCardImg = closestCard.querySelector('.card__image');
+  const closestCardTitle = closestCard.querySelector('.card__title');
+  popupPic.classList.toggle('popup_opened');
+  const popupImg = document.querySelector('.popup-pic__image');
+  const popupTitle = document.querySelector('.popup-pic__title');
+  const img = closestCardImg.src;
+  const title = closestCardTitle.textContent;
+  popupImg.setAttribute('src', img);
+  popupImg.setAttribute('alt', title);
+  popupTitle.textContent = title;
+  closePicButton.addEventListener('click', closePic);
+}
+// функция закрытия попапа с изображением
+function closePic() {
+  popupPic.classList.remove('popup_opened');
+}
+
+
+
 editButton.addEventListener('click', openEditPopup);
 addButton.addEventListener('click', openCardAddPopup);
 closeEditButton.addEventListener('click', closeEditPopup);
 closeAddButton.addEventListener('click', closeAddPopup);
 popupEdit.addEventListener('submit', formSubmitHandler); 
 popupCardAdd.addEventListener('submit', saveNewCard);
-
 
 
