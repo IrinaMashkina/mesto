@@ -63,9 +63,9 @@ const formElement = document.querySelector('.popup');
 
 
 // ПОПАП РЕДАКТИРОВАНИЯ ИНФОРМАЦИИ О ПОЛЬЗОВАТЕЛЕ
-const popupEdit = document.querySelector('.popup__edit');
+const popupEdit = document.querySelector('.popup_place_edit');
 const editButton = document.querySelector('.profile__edit-button');
-const closeEditButton = document.querySelector('.popup__edit-close');
+const closeEditButton = document.querySelector('.popup__close-button_place_edit');
 // Находим формы ввода имени и "о себе"
 const nameInput = formElement.querySelector(".popup__input_type_name");
 const jobInput = formElement.querySelector(".popup__input_type_job");
@@ -96,9 +96,9 @@ function formSubmitHandler (evt) {
 
 
 // ПОПАП ДОБАВЛЕНИЯ КАРТОЧЕК
-const popupCardAdd = document.querySelector('.popup__card-add');
+const popupCardAdd = document.querySelector('.popup_place_card-add');
 const addButton = document.querySelector('.profile__add-button');
-const closeAddButton = document.querySelector('.popup__add-close');
+const closeAddButton = document.querySelector('.popup__close-button_place_card-add');
 // Находим формы ввода данных карточки
 const cardTitleInput = document.querySelector(".popup__input_type_title");
 const cardLinkInput = document.querySelector(".popup__input_type_link");
@@ -109,7 +109,6 @@ function openCardAddPopup() {
 // Функция закрытия попапа добавления карточек
 function closeAddPopup() {
     popupCardAdd.classList.remove('popup_opened');  
-    console.log('Закрываем попап');
 };
 // Добавление карточек
 function saveNewCard (evt) {
@@ -135,22 +134,21 @@ function likeActive(evt) {
     const eventTarget = evt.target;
     const targetLike = eventTarget.closest('.card__like');
     targetLike.classList.toggle('card__like_active');
-    console.log('Лайкнули');
 };
 
 
 
 // ПОПАП УВЕЛИЧЕНИЯ ФОТО
-const popupPic = document.querySelector('.popup-pic');
-const closePicButton = document.querySelector('.popup-pic__close')
+const popupPic = document.querySelector('.popup_place_pic');
+const closePicButton = document.querySelector('.popup__close-button_place_pic')
 function clickImage(event) {
   const eventTarget = event.target;
   const closestCard = eventTarget.closest('.card');
   const closestCardImg = closestCard.querySelector('.card__image');
   const closestCardTitle = closestCard.querySelector('.card__title');
   popupPic.classList.toggle('popup_opened');
-  const popupImg = document.querySelector('.popup-pic__image');
-  const popupTitle = document.querySelector('.popup-pic__title');
+  const popupImg = document.querySelector('.popup__image');
+  const popupTitle = document.querySelector('.popup__title_place_pic');
   const img = closestCardImg.src;
   const title = closestCardTitle.textContent;
   popupImg.setAttribute('src', img);
