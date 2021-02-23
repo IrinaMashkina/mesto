@@ -49,20 +49,32 @@
             </section>
                 
             <section class="popup popup_place_edit">
-                <form name="edit-form" class="popup__container">
+                <form name="edit-form" class="popup__container popup__form" action='#' novalidate>
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <input class="popup__input popup__input_type_name" name ="name" type="text" value=""/>
-                    <input class="popup__input popup__input_type_job" name="job" type="text" value=""/>
+                    <section class="popup__form-section">
+                      <input class="popup__input popup__input_type_name" id="input-name" name ="name" type="text" required minlength="2" maxlength="40" value=""/>
+                      <span class="popup__input-error" id="input-name-error"></span>
+                    </section>
+                    <section class="popup__form-section">
+                      <input class="popup__input popup__input_type_job" id="input-job" name="job" type="text" required minlength="2" maxlength="200" value=""/>
+                      <span class="popup__input-error" id="input-job-error"></span>
+                    </section>
                     <button class="popup__submit popup__submit_type_save" type="submit">Сохранить</button>
                     <button class="popup__close-button popup__close-button_place_edit" type="button" aria-label="Закрыть"></button> 
                 </form>
             </section>
 
             <section class="popup popup_place_card-add">
-                <form name="add-form" class="popup__container">
+                <form name="add-form" class="popup__container popup__form" action='#' novalidate>
                     <h2 class="popup__title">Новое место</h2>
-                    <input class="popup__input popup__input_type_title" name ="caption" type="text" value="" placeholder="Название"/>
-                    <input class="popup__input popup__input_type_link" name="url" type="text" value="" placeholder="Ссылка на картинку"/>
+                    <section class="popup__form-section">
+                      <input class="popup__input popup__input_type_title" id="input-card-title" name ="caption" type="text" required minlength="2" maxlength="30" value="" placeholder="Название"/>
+                      <span class="popup__input-error" id="input-card-title-error"></span>
+                    </section>
+                    <section class="popup__form-section">
+                      <input class="popup__input popup__input_type_link" id="input-card-link" name="url" type="url" required value="" placeholder="Ссылка на картинку"/>
+                      <span class="popup__input-error" id="input-card-link-error"></span>
+                    </section>
                     <button class="popup__submit popup__submit_type_newcard" type="submit">Создать</button>
                     <button class="popup__close-button popup__close-button_place_card-add" type="button" aria-label="Закрыть"></button> 
                 </form>
@@ -82,6 +94,8 @@
             <p class="footer__text">© 2020 Mesto Russia</p>
         </footer>
     </div>
-<script src="./script/script.js"></script>   
+<script src="./script/validate.js"></script>
+<script src="./script/script.js"></script>
+   
 </body>
 </html>

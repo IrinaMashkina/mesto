@@ -17,6 +17,7 @@
   padding: 34px 36px 37px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  cursor:default;
 }
 
 @media (max-width: 640px) {
