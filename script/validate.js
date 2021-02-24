@@ -1,3 +1,12 @@
+const options = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__submit_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
+  };
+
 function showInputError(formElement, inputElement, errorMessage, options)  {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(options.inputErrorClass);
@@ -34,8 +43,8 @@ inputList.forEach((inputElement) => {
 };
 
 function enableValidation(options) {
-const formList = Array.from(document.querySelectorAll(options.formSelector));
-formList.forEach((formElement) => {
+  const formList = Array.from(document.querySelectorAll(options.formSelector));
+  formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
     })
@@ -59,11 +68,4 @@ function toggleButtonState(inputList, buttonElement, options)  {
  }
 };
 
-enableValidation({
-formSelector: '.popup__form',
-inputSelector: '.popup__input',
-submitButtonSelector: '.popup__submit',
-inactiveButtonClass: 'popup__submit_disabled',
-inputErrorClass: 'popup__input_type_error',
-errorClass: 'popup__input-error_active'
-});
+enableValidation(options);

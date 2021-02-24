@@ -27,6 +27,7 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
 // Находим template
 const cardTemplate = document.querySelector('.template').content;
 const elements = document.querySelector('.elements');
@@ -51,10 +52,16 @@ const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__profession');
 
 
-
+// const options = {
+//   formSelector: '.popup__form',
+//   inputSelector: '.popup__input',
+//   submitButtonSelector: '.popup__submit',
+//   inactiveButtonClass: 'popup__submit_disabled',
+//   inputErrorClass: 'popup__input_type_error',
+//   errorClass: 'popup__input-error_active'
+// };
 
 // Создаём  карточки
-
 function getCard(item) {
     const newCard = cardTemplate.querySelector('.card').cloneNode(true);
     const image = newCard.querySelector('.card__image');
@@ -72,67 +79,62 @@ function getCard(item) {
     });
 
     return newCard;  
-}
+};
 
 
 // Добавляем карточки в секцию elements
 function renderCard() {
     const html = initialCards.map(getCard);
     elements.append(...html);
-}
+};
+
 renderCard();
 
+// Закрытие по оверлэй
 function onOverlayClose(evt) {
-  const openedPopup = document.querySelector('.popup_opened');
   const targetItem = evt.target;
   if (targetItem.classList.contains('popup')) {
-      closePopup(openedPopup);
+    closePopup(targetItem);
     }
-}
+};
 
+// Закрытие по esc
 function onEscClose(evt) {
-  const openedPopup = document.querySelector('.popup_opened');
-  if(evt.keyCode == 27) {
+  const ESCAPE = 27;
+  if(evt.keyCode == ESCAPE) {
+    const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   }
-}
+};
 
+// Открытие любого попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened'); 
   document.addEventListener('click', onOverlayClose);
   document.addEventListener('keydown', onEscClose);
-  
-}
+};
 
+// Открытие попапа форм
 function openForm(popup) {
   openPopup(popup);
   hideErrors(popup);
-  enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__submit',
-    inactiveButtonClass: 'popup__submit_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active'
-  });
-}
+};
+
 // Функция закрытия  попапа 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('click', onOverlayClose);
   document.removeEventListener('keydown', onEscClose);
-   };
+};
 
+// Функция очистки ошибок валидации
 function hideErrors (popup) {
   const formElement = popup.querySelector('.popup__form');
   const inputList = formElement.querySelectorAll('.popup__input');
   inputList.forEach((inputElement) => {
-    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.remove('popup__input_type_error');
-    errorElement.textContent = "";
-    errorElement.classList.remove('popup__input-error_active');
-  }) 
-}
+      hideInputError(formElement, inputElement, options);
+    });
+};
 
 // Функция открытия попапа редактирования профиля
 function openProfilePopup() {
@@ -159,8 +161,6 @@ function saveNewCard (evt) {
   const inputLink = cardLinkInput.value;
   const newCardAdd = getCard({name: inputText, link: inputLink});
   elements.prepend(newCardAdd);
-  cardTitleInput.value = '';
-  cardLinkInput.value = '';
   closePopup(popupCardAdd);
 };
 
@@ -168,10 +168,8 @@ function saveNewCard (evt) {
 function openAddCardPopup() {
   openForm(popupCardAdd);
   cardTitleInput.value = '';
-  cardLinkInput.value = '';
-  
- 
-}
+  cardLinkInput.value = ''; 
+};
 
 // Удаление карточки
 function handleDelete(evt) {
@@ -198,7 +196,8 @@ function clickImage(item) {
   popupImg.setAttribute('src', item.link);
   popupImg.setAttribute('alt', item.name);
   popupTitle.textContent = item.name;
-}
+};
+
 
 editButton.addEventListener('click', openProfilePopup);
 addButton.addEventListener('click', openAddCardPopup);
