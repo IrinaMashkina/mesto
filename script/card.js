@@ -4,8 +4,7 @@ export default class Card {
        this._image = link,
        this._caption  = name,
        this._selector = selector
-    
-    }  
+        }  
     
 _getTemplate() {
     const cardElement = document.querySelector('.template').content.querySelector('.card').cloneNode(true);  
@@ -30,17 +29,14 @@ _setEventListeners() {
       this._clickImage()});
     
 };
-
 _clickImage() {
     const popupImg = document.querySelector('.popup__image');
     const popupTitle = document.querySelector('.popup__title_place_pic');
     const popupPic = document.querySelector('.popup_place_pic');
-    popupPic.classList.add('popup_opened');
+    popupPic.classList.add('popup_opened'); 
     popupImg.src = this._image;
     popupImg.alt = this._caption;
     popupTitle.textContent = this._caption;
-    console.log(this._image);
-    console.log(this._caption)
   };
 
 _handleDelete() {
