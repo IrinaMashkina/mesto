@@ -1,3 +1,4 @@
+import {openPopup} from './index.js'
 
 export default class Card {
     constructor(link, name, selector) {
@@ -31,10 +32,11 @@ _setEventListeners() {
 };
 // открытие "увеличения карточки"
 _clickImage() {
+    
     const popupImg = document.querySelector('.popup__image');
     const popupTitle = document.querySelector('.popup__title_place_pic');
     const popupPic = document.querySelector('.popup_place_pic');
-    popupPic.classList.add('popup_opened'); 
+    openPopup(popupPic);
     popupImg.src = this._image;
     popupImg.alt = this._caption;
     popupTitle.textContent = this._caption;

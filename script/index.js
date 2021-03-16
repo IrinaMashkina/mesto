@@ -79,7 +79,7 @@ function onEscClose(evt) {
 };
 
 // Открытие любого попапа
-function openPopup(popup) {
+export const openPopup = function(popup) {
   popup.classList.add('popup_opened'); 
   document.addEventListener('click', onOverlayClose);
   document.addEventListener('keydown', onEscClose);
