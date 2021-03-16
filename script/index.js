@@ -28,15 +28,21 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
+// Добавление на страницу карточек из массива initialCards
 initialCards.forEach((item) => {
   const card = new Card(item.link, item.name, '.template');
   const cardElement = card.generateCard();
   document.querySelector('.elements').append(cardElement);
 });
 
+// контейнер для карточек
+const elements = document.querySelector('.elements');
+
+// ПОПАП БОЛЬШОЙ КАРТИНКИ
 const popupPic = document.querySelector('.popup_place_pic');
-// ПОПАП ДОБАВЛЕНИЯ КАРТОЧЕК
+const closePicButton = document.querySelector('.popup__close-button_place_pic');
+
+// ПОПАП ДОБАВЛЕНИЯ НОВОЙ КАРТОЧКИ
 const popupCardAdd = document.querySelector('.popup_place_card-add');
 const addButton = document.querySelector('.profile__add-button');
 const closeAddButton = document.querySelector('.popup__close-button_place_card-add');
@@ -49,7 +55,8 @@ const profilePopup = document.querySelector('.popup_place_edit');
 const editButton = document.querySelector('.profile__edit-button');
 const closeEditButton = document.querySelector('.popup__close-button_place_edit');
 // Находим формы ввода имени и "о себе"
-
+const nameInput = document.querySelector(".popup__input_type_name");
+const jobInput = document.querySelector(".popup__input_type_job");
 // Находим на главной странице секцию Профиль, где меняются "Имя" и "О себе"
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__profession');
@@ -78,8 +85,6 @@ function openPopup(popup) {
   document.addEventListener('keydown', onEscClose);
 };
 
-
-
 // Открытие попапа форм
 function openForm(popup) {
   openPopup(popup);
@@ -103,21 +108,17 @@ function hideErrors (popup) {
   inputList.forEach((input) => {
     input.classList.remove('popup__input_type_error');
   });
-}
+};
 
 // Функция открытия попапа редактирования профиля
 function openProfilePopup() {
-  const nameInput = document.querySelector(".popup__input_type_name");
-  const jobInput = document.querySelector(".popup__input_type_job");
-  const profileName = document.querySelector('.profile__name');
-  const profileJob = document.querySelector('.profile__profession');
-    openForm(profilePopup);
-    nameInput.value=profileName.textContent;
-    jobInput.value=profileJob.textContent;
+  openForm(profilePopup);
+  nameInput.value=profileName.textContent;
+  jobInput.value=profileJob.textContent;
     
 };
 
-// Функция "сохранить изменения"
+// Функция "сохранить изменения" в профиле
 function formSubmitHandler(evt) {
     evt.preventDefault(); 
     profileName.textContent = nameInput.value;
@@ -127,15 +128,14 @@ function formSubmitHandler(evt) {
     closePopup(profilePopup);
 };
 
-// Добавление карточек
+// // Добавление карточек
 function saveNewCard(evt) {
   evt.preventDefault();
-  const inputText = cardTitleInput.value;
-  const inputLink = cardLinkInput.value;
-  const newCardAdd = getCard({name: inputText, link: inputLink});
-  elements.prepend(newCardAdd);
+  const newCard = new Card(cardLinkInput.value, cardTitleInput.value, '.template');
+  const cardElement = newCard.generateCard();
+  elements.prepend(cardElement);
   closePopup(popupCardAdd);
-}
+};
 
 // Открытие попапа для добавления карточек
 function openAddCardPopup() {
@@ -144,17 +144,13 @@ function openAddCardPopup() {
   cardLinkInput.value = ''; 
 };
 
-
-
-// ПОПАП УВЕЛИЧЕНИЯ ФОТО
-const closePicButton = document.querySelector('.popup__close-button_place_pic');
-
+// Запуск валидации
 const profileForm = new FormValidator(options, profilePopup)
 profileForm.enableValidation();
 const addCardForm = new FormValidator(options, popupCardAdd)
 addCardForm.enableValidation();
 
-
+// Слушатели
 editButton.addEventListener('click', openProfilePopup);
 addButton.addEventListener('click', openAddCardPopup);
 
