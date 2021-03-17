@@ -1,4 +1,5 @@
-import {openPopup} from './index.js'
+import {openPopup} from './index.js';
+import { popupImg, popupTitle, popupPic} from './index.js'
 
 export default class Card {
     constructor(link, name, selector) {
@@ -15,8 +16,9 @@ _getTemplate() {
 generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._element.querySelector('.card__image').src = this._image;
-    this._element.querySelector('.card__image').alt = this._alt;
+    const pic = this._element.querySelector('.card__image');
+    pic.src = this._image;
+    pic.alt = this._alt;
     this._element.querySelector('.card__title').textContent = this._caption;
     return this._element;      
 };
@@ -32,10 +34,6 @@ _setEventListeners() {
 };
 // открытие "увеличения карточки"
 _clickImage() {
-    
-    const popupImg = document.querySelector('.popup__image');
-    const popupTitle = document.querySelector('.popup__title_place_pic');
-    const popupPic = document.querySelector('.popup_place_pic');
     openPopup(popupPic);
     popupImg.src = this._image;
     popupImg.alt = this._caption;
