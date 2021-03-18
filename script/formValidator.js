@@ -1,13 +1,3 @@
-export const options = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__submit',
-    inactiveButtonClass: 'popup__submit_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active'
-   
-  };
-
 export default class FormValidator {
     constructor (data, formElement) {
         this._formSelector = data.formSelector;
@@ -27,7 +17,7 @@ _showInputError(inputElement, errorMessage)  {
           errorElement.classList.add(this._errorClass);
 };
         
-hideInputError(inputElement) {
+_hideInputError(inputElement) {
         const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
         inputElement.classList.remove(this._inputErrorClass);
         errorElement.textContent = "";
@@ -38,10 +28,14 @@ _isValid(inputElement) {
           if(!inputElement.validity.valid) {
               this._showInputError(inputElement, inputElement.validationMessage);
           } else {
-              this.hideInputError(inputElement);
+              this._hideInputError(inputElement);
           }
         };
-        
+clearValidationErrors() {
+    this._inputList.forEach((input) => {
+        this._hideInputError(input)
+    });
+};      
 _setEventListeners() {
         this.toggleButtonState();
         
