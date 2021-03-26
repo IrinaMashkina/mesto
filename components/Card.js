@@ -1,11 +1,12 @@
 import {openPopup} from './index.js';
-import { popupImg, popupTitle, popupPic} from './index.js'
+import { popupImg, popupTitle, popupPic} from '../utils/constants.js'
 
 export default class Card {
-    constructor(link, name, selector) {
+    constructor(link, name, selector, handleCardClick) {
        this._image = link,
        this._caption  = name,
        this._selector = selector
+       this.handleCardClick = handleCardClick;
         }  
 // получение темплэйт карточки   
 _getTemplate() {
@@ -34,10 +35,8 @@ _setEventListeners() {
 };
 // открытие "увеличения карточки"
 _clickImage() {
-    openPopup(popupPic);
-    popupImg.src = this._image;
-    popupImg.alt = this._caption;
-    popupTitle.textContent = this._caption;
+    this.handleCardClick();
+    
   };
 // удаление карточки 
 _handleDelete() {
@@ -50,3 +49,5 @@ _likeActive() {
   };
 }
 
+// Преобразуйте класс Card
+// Свяжите класс Card c попапом. Сделайте так, чтобы Card принимал в конструктор функцию handleCardClick. Эта функция должна открывать попап с картинкой при клике на карточку.
