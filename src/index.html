@@ -8,12 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки">
   <meta name="author" content="Ирина Машкина">
-  
+  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body>
     <div class="page">
         <header class="header">
+            <!-- <img src="./images/logo.svg" alt="Логотип сервиса Место." class="header__logo"> -->
             <img src="<%=require('./images/logo.svg')%>" alt="Логотип сервиса Место." class="header__logo">
         </header>
 
@@ -22,7 +23,8 @@
 
             <section class="profile">
                 <div class="profile__information">
-                  <img src="<%=requare('./images/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
+                  <!-- <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar"> -->
+                  <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
                   <div class="profile__info">
                       <div class="profile__wrapper">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -94,6 +96,15 @@
             <p class="footer__text">© 2020 Mesto Russia</p>
         </footer>
     </div>
-<!-- <img src="<%=require('./images/logo.png')%>" alt="Логотип">  -->
+<!-- <script type='module' src = './index.js'></script>
+<script type='module' src = './utils/constants.js'></script>
+<script type='module' src = './components/Card.js'></script>
+<script type='module' src = './components/FormValidator.js'></script>
+<script type='module' src = './components/Popup.js'></script>
+<script type='module' src = './components/PopupWithForm.js'></script>
+<script type='module' src = './components/PopupWithImage.js'></script>
+<script type='module' src = './components/Section.js'></script>
+<script type='module' src = './components/UserInfo.js'></script> -->
+
 </body>
 </html>

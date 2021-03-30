@@ -26,34 +26,25 @@ export const initialCards = [
   ];
 
   export const ESCAPE_KEY_CODE = 27;
-  // контейнер для карточек
-export const elements = document.querySelector('.elements');
 
-// ПОПАП БОЛЬШОЙ КАРТИНКИ
-export const popupPic = document.querySelector('.popup_place_pic');
-export const closePicButton = document.querySelector('.popup__close-button_place_pic');
-
-// ПОПАП ДОБАВЛЕНИЯ НОВОЙ КАРТОЧКИ
-export const popupCardAdd = document.querySelector('.popup_place_card-add');
+// попап добавления новых карточек
+export const cardAddPopupEl = document.querySelector('.popup_place_card-add');
+// кнопка открытия попапа добавления новых карточек
 export const addButton = document.querySelector('.profile__add-button');
-export const closeAddButton = document.querySelector('.popup__close-button_place_card-add');
-// Находим формы ввода данных карточки
-export const cardTitleInput = document.querySelector(".popup__input_type_title");
-export const cardLinkInput = document.querySelector(".popup__input_type_link");
 
-// ПОПАП РЕДАКТИРОВАНИЯ ИНФОРМАЦИИ О ПОЛЬЗОВАТЕЛЕ
-export const profilePopup = document.querySelector('.popup_place_edit');
+// попап редактирования информации о пользователе
+export const profilePopupEl = document.querySelector('.popup_place_edit');
+// кнопка открытия попапа редактирования информации о пользователе
 export const editButton = document.querySelector('.profile__edit-button');
-export const closeEditButton = document.querySelector('.popup__close-button_place_edit');
-// Находим формы ввода имени и "о себе"
+
+// формы ввода имени и "о себе"
 export const nameInput = document.querySelector(".popup__input_type_name");
 export const jobInput = document.querySelector(".popup__input_type_job");
-// Находим на главной странице секцию Профиль, где меняются "Имя" и "О себе"
-export const profileName = document.querySelector('.profile__name');
-export const profileJob = document.querySelector('.profile__profession');
 
+// попап большой картинки
 export const popupImg = document.querySelector('.popup__image');
 export const popupTitle = document.querySelector('.popup__title_place_pic');
+
 export const options = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
