@@ -77,7 +77,7 @@ const elementsList = new Section(
 
 elementsList.renderItems();
 
-// создать экземпляр UserInfo   ????
+// создать экземпляр UserInfo 
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__profession",
@@ -97,24 +97,3 @@ const profileValidator = new FormValidator(options, profilePopupEl);
 profileValidator.enableValidation();
 const addCardValidator = new FormValidator(options, cardAddPopupEl);
 addCardValidator.enableValidation();
-
-// // Функция открытия попапа редактирования профиля
-// function openProfilePopup() {
-//   openPopup(profilePopup);
-//   nameInput.value=userInfo.setUserInfo().name;
-//   jobInput.value=userInfo.setUserInfo().job;
-//   const inputList = Array.from(profilePopup.querySelectorAll('.popup__input'));
-//   profileForm.clearValidationErrors();
-//   profileForm.toggleButtonState();
-// };
-
-// function createCard(item) {
-//   const card = new Card(item.link, item.name, '.template', handleCardClick);
-//   return card.generateCard();
-// };
-
-// // Добавление на страницу карточек из массива initialCards
-// initialCards.forEach((item) => {
-//   const cardElement = createCard(item);
-//   elements.append(cardElement);
-// });

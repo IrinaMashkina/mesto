@@ -25,7 +25,7 @@ export const initialCards = [
     }
   ];
 
-  export const ESCAPE_KEY_CODE = 27;
+  export const CLOSE_KEY_CODE = 27;
 
 // попап добавления новых карточек
 export const cardAddPopupEl = document.querySelector('.popup_place_card-add');
