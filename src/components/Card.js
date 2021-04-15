@@ -1,9 +1,18 @@
+import Api from "./Api";
+
 export default class Card {
-  constructor(link, name, { selector, handleCardClick }) {
-    this._image = link;
-    this._caption = name;
+  constructor(data, {selector, handleCardClick, handleCardDelete}, id, api) {
+    this._image = data.link;
+    this._caption = data.name;
+    this._likes = data.likes;
     this._selector = selector;
     this.handleCardClick = handleCardClick;
+    this.handleCardDelete = handleCardDelete;
+    this.owner = data.owner._id;
+    this.myId = id;
+    this._id = data._id;
+    this._api = api;
+  
   }
   // получение темплэйт карточки
   _getTemplate() {
@@ -17,10 +26,15 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
+    this._countLikes = this._element.querySelector(".card__likes-count");
+    this._countLikes.textContent = this._likes.length;
     const pic = this._element.querySelector(".card__image");
     pic.src = this._image;
     pic.alt = this._alt;
     this._element.querySelector(".card__title").textContent = this._caption;
+    if(this.owner === this.myId) {
+      this._element.querySelector(".card__delete").classList.add("card__delete_visible")
+    };
     return this._element;
   }
 
@@ -29,10 +43,11 @@ export default class Card {
     this._element
       .querySelector(".card__delete")
       .addEventListener("click", () => {
-        this._handleDelete();
+        this.handleCardDelete({callback: () => this._handleDelete()});
+        // this._handleDelete();
       });
     this._element.querySelector(".card__like").addEventListener("click", () => {
-      this._likeActive();
+      this._handleCardLike();
     });
     this._element
       .querySelector(".card__image")
@@ -46,10 +61,16 @@ export default class Card {
     this._element.closest(".card").remove();
   }
   //   Лайк
-  _likeActive() {
-    this._element
-      .querySelector(".card__like")
-      .classList.toggle("card__like_active");
+  _handleCardLike() {
+    const likeButton = this._element.querySelector(".card__like");
+    if(likeButton.classList.contains('card__like_active')) {
+      likeButton.classList.remove("card__like_active");
+      this._api.deleteLike(this._id).then((data) => this._countLikes.textContent = data.likes.length).catch((err) => console.log(err));
+    } else {
+      likeButton.classList.add("card__like_active");
+      this._api.putLike(this._id).then((data) => this._countLikes.textContent = data.likes.length).catch((err) => console.log(err));
+    }
   }
+
 }
 

@@ -41,11 +41,14 @@
 
             <section class="elements">
                 <template class="template">
-                    <figure class="card">
+                    <figure class="card" data-id = "">
                         <img src="#" alt="#" class="card__image">
                         <figcaption class="card__caption">
                             <h2 class="card__title"></h2>
-                            <button aria-label="Кнопка нравится." type="button" class="card__like"></button>   
+                            <div class ='card__like-container'>
+                                <button aria-label="Кнопка нравится." type="button" class="card__like"></button>
+                                <span class='card__likes-count'></span>   
+                            </div>  
                         </figcaption>
                         <button aria-label="Удалить карточку." type="button" class="card__delete"></button>
                     </figure>
@@ -72,11 +75,11 @@
                 <form name="add-form" class="popup__container popup__form" action='#' novalidate>
                     <h2 class="popup__title">Новое место</h2>
                     <section class="popup__form-section">
-                      <input class="popup__input popup__input_type_title" id="input-card-title" name ="caption" type="text" required minlength="2" maxlength="30" value="" placeholder="Название"/>
+                      <input class="popup__input popup__input_type_title" id="input-card-title" name ="name" type="text" required minlength="2" maxlength="30" value="" placeholder="Название"/>
                       <span class="popup__input-error" id="input-card-title-error"></span>
                     </section>
                     <section class="popup__form-section">
-                      <input class="popup__input popup__input_type_link" id="input-card-link" name="url" type="url" required value="" placeholder="Ссылка на картинку"/>
+                      <input class="popup__input popup__input_type_link" id="input-card-link" name="link" type="url" required value="" placeholder="Ссылка на картинку"/>
                       <span class="popup__input-error" id="input-card-link-error"></span>
                     </section>
                     <button class="popup__submit popup__submit_type_newcard" type="submit">Создать</button>
@@ -94,7 +97,7 @@
             <section class='popup popup_place_delete'>
                 <div class='popup__container'>
                     <h2 class = popup__title>Вы уверены?</h2>
-                    <button class = 'popup__submit popup__submit_place_delete'>Да</button>
+                    <button type ="submit" class = 'popup__submit popup__submit_place_delete'>Да</button>
                     <button class = 'popup__close-button popup__close-button_place_delete'></button>
                 </div>
             </section>
@@ -102,7 +105,7 @@
                 <form class='popup__container'>
                     <h2 class="popup__title">Обновить аватар</h2>
                     <section class="popup__form-section">
-                        <input class="popup__input popup__input_type_link" id="input-avatar-link" name="url" type="url" required value="" placeholder="https://somewebsite.com/someimage.jpg"/>
+                        <input class="popup__input popup__input_type_link" id="input-avatar-link" name="link" type="url" required value="" placeholder="https://somewebsite.com/someimage.jpg"/>
                         <span class="popup__input-error" id="input-card-link-error"></span>
                     </section>
                     <button class="popup__submit popup__submit_type_avatar" type="submit">Сохранить</button>

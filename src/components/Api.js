@@ -1,3 +1,5 @@
+// import { data } from "autoprefixer";
+
 export default class Api {
   constructor({ baseUrl, headers }) {
     this._URL = baseUrl;
@@ -34,11 +36,12 @@ export default class Api {
     return fetch(`${this._URL}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((response) =>
-      response.ok
-        ? Promise.resolve("success")
-        : Promise.reject(`Ошибка: ${response.status}`)
-    );
+    }).then((res) => {
+      if(res.ok) {
+        return res.json();
+      } 
+      return Promise.reject(`Ошибка: ${response.status}`)
+    });
   }
 
   editUserInfo(data) {
@@ -47,7 +50,7 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
-        about: data.job,
+        about: data.about,
       }),
     }).then((response) =>
       response.ok
@@ -66,4 +69,45 @@ export default class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
-}
+
+  putLike(id) {
+    return fetch(`${this._URL}/cards/likes/${id}`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+  }
+
+  deleteLike(id) {
+    return fetch(`${this._URL}/cards/likes/${id}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+  }
+
+  editAvatar(link) {
+    return fetch(`${this._URL}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: link
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+  }
+
+  }
+

@@ -25,8 +25,8 @@
 //     }
 //   ];
 
-  export const CLOSE_KEY_CODE = 27;
-
+export const CLOSE_KEY_CODE = 27;
+export const myId = '3d322814f340315757a145a7';
 // попап добавления новых карточек
 export const cardAddPopupEl = document.querySelector('.popup_place_card-add');
 // кнопка открытия попапа добавления новых карточек
@@ -35,8 +35,8 @@ export const addButton = document.querySelector('.profile__add-button');
 // попап редактирования информации о пользователе
 export const profilePopupEl = document.querySelector('.popup_place_edit');
 // кнопка открытия попапа редактирования информации о пользователе
-export const editButton = document.querySelector('.profile__edit-button');
-
+export const editProfileButton = document.querySelector('.profile__edit-button');
+export const editAvatar = document.querySelector('.profile__avatar-container');
 // формы ввода имени и "о себе"
 export const nameInput = document.querySelector(".popup__input_type_name");
 export const jobInput = document.querySelector(".popup__input_type_job");

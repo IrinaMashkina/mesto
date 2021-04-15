@@ -11,6 +11,7 @@ export default class PopupWithForm extends Popup {
     );
     this._inputValues = inputValues;
     this._validator = validator;
+    this._buttonTextContent = this._buttonSubmit.textContent
   }
   _getInputValues() {
     this._formValues = {};
