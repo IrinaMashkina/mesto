@@ -1,29 +1,3 @@
-// export const initialCards = [
-//     {
-//       name: 'Архыз',
-//       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-//     },
-//     {
-//       name: 'Челябинская область',
-//       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-//     },
-//     {
-//       name: 'Иваново',
-//       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-//     },
-//     {
-//       name: 'Камчатка',
-//       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-//     },
-//     {
-//       name: 'Холмогорский район',
-//       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-//     },
-//     {
-//       name: 'Байкал',
-//       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-//     }
-//   ];
 
 export const CLOSE_KEY_CODE = 27;
 export const myId = '3d322814f340315757a145a7';
@@ -34,6 +8,9 @@ export const addButton = document.querySelector('.profile__add-button');
 
 // попап редактирования информации о пользователе
 export const profilePopupEl = document.querySelector('.popup_place_edit');
+
+// попап смены аватарки
+export const avatarPopupEl = document.querySelector('.popup_place_avatar');
 // кнопка открытия попапа редактирования информации о пользователе
 export const editProfileButton = document.querySelector('.profile__edit-button');
 export const editAvatar = document.querySelector('.profile__avatar-container');

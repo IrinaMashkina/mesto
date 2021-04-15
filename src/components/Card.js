@@ -1,7 +1,12 @@
-import Api from "./Api";
+// import Api from "./Api";
 
 export default class Card {
-  constructor(data, {selector, handleCardClick, handleCardDelete}, id, api) {
+  constructor(
+    data,
+    { selector, handleCardClick, handleCardDelete },
+    myId,
+    api
+  ) {
     this._image = data.link;
     this._caption = data.name;
     this._likes = data.likes;
@@ -9,10 +14,10 @@ export default class Card {
     this.handleCardClick = handleCardClick;
     this.handleCardDelete = handleCardDelete;
     this.owner = data.owner._id;
-    this.myId = id;
+    this.myId = myId;
     this._id = data._id;
     this._api = api;
-  
+    
   }
   // получение темплэйт карточки
   _getTemplate() {
@@ -32,20 +37,25 @@ export default class Card {
     pic.src = this._image;
     pic.alt = this._alt;
     this._element.querySelector(".card__title").textContent = this._caption;
-    if(this.owner === this.myId) {
-      this._element.querySelector(".card__delete").classList.add("card__delete_visible")
-    };
+    if (this.owner === this.myId) {
+      this._element
+        .querySelector(".card__delete")
+        .classList.add("card__delete_visible");
+    }
     return this._element;
   }
 
   // слушатели карточки
   _setEventListeners() {
-    this._element
-      .querySelector(".card__delete")
-      .addEventListener("click", () => {
-        this.handleCardDelete({callback: () => this._handleDelete()});
-        // this._handleDelete();
-      });
+    this._element.querySelector(".card__delete").addEventListener(
+      "click",
+      () => {
+        this.handleCardDelete({ callback: () => this._handleDelete})
+        
+      },
+      { once: true }
+    );
+
     this._element.querySelector(".card__like").addEventListener("click", () => {
       this._handleCardLike();
     });
@@ -55,22 +65,40 @@ export default class Card {
         this.handleCardClick();
       });
   }
+  _removeEventListeners() {
+    this._element.querySelector(".card__delete").removeEventListener(
+      "click",
+      () => {
+        this.handleCardDelete({ callback: () => this._handleDelete})
+      },
+      { once: true }
+    );
+  }
 
   // удаление карточки
   _handleDelete() {
     this._element.closest(".card").remove();
+    this._removeEventListeners()
   }
   //   Лайк
   _handleCardLike() {
     const likeButton = this._element.querySelector(".card__like");
-    if(likeButton.classList.contains('card__like_active')) {
-      likeButton.classList.remove("card__like_active");
-      this._api.deleteLike(this._id).then((data) => this._countLikes.textContent = data.likes.length).catch((err) => console.log(err));
+    if (likeButton.classList.contains("card__like_active")) {
+      this._api
+        .deleteLike(this._id)
+        .then((data) => {
+          this._countLikes.textContent = data.likes.length;
+          likeButton.classList.remove("card__like_active");
+        })
+        .catch((err) => console.log(err));
     } else {
-      likeButton.classList.add("card__like_active");
-      this._api.putLike(this._id).then((data) => this._countLikes.textContent = data.likes.length).catch((err) => console.log(err));
+      this._api
+        .putLike(this._id)
+        .then((data) => {
+          this._countLikes.textContent = data.likes.length;
+          likeButton.classList.add("card__like_active");
+        })
+        .catch((err) => console.log(err));
     }
   }
-
 }
-
