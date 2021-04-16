@@ -17,8 +17,7 @@ export default class Card {
     this.myId = myId;
     this._id = data._id;
     this._api = api;
-    this.card=data;
-    
+    this.card = data;
   }
   // получение темплэйт карточки
   _getTemplate() {
@@ -49,14 +48,11 @@ export default class Card {
 
   // слушатели карточки
   _setEventListeners() {
-    this._element.querySelector(".card__delete").addEventListener(
-      "click",
-      () => {
-        this.handleCardDelete({ callback: () => this._handleDelete()})
-        
-      },
-      { once: true }
-    );
+    this._element
+      .querySelector(".card__delete")
+      .addEventListener("click", () =>
+        this.handleCardDelete({ callback: () => this._handleDelete() })
+      );
 
     this._element.querySelector(".card__like").addEventListener("click", () => {
       this._handleCardLike();

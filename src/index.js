@@ -64,7 +64,8 @@ const profilePopup = new PopupWithForm(".popup_place_edit", {
     profileValidator.clearValidationErrors();
     profileValidator.toggleButtonState();
   },
-});
+})
+
 // создание карточки
 function renderCard(item) {
   const newCard = new Card(
