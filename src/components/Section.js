@@ -11,7 +11,7 @@ export default class Section {
           this.addItem(this._renderer(item));
         });
       })
-      .catch((err) => console.log(`Ошибка ${err}`));
+      .catch((err) => console.log(`Ошибка: ${err}`));
   }
 
   addItem(element) {

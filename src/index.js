@@ -79,6 +79,15 @@ const deletePopup = new PopupDeleteCard(".popup_place_delete", {
   },
 });
 
+// создать экземпляр Section
+const cardList = new Section(
+  {
+    renderer: (item) => renderCard(item),
+  },
+  ".elements"
+);
+cardList.renderItems(api.getInitialCards());
+
 // создание карточки
 function renderCard(item) {
   const newCard = new Card(
@@ -105,8 +114,8 @@ const cardAddPopup = new PopupWithForm(".popup_place_card-add", {
     api
       .addNewCard(cardAddPopup._getInputValues())
       .then((item) => {
-        const card = renderCard(item);
-        elementsList.addItem(card);
+        cardList.addItem(renderCard(item));
+        console.log(item)
       })
       .catch((err) => console.log(`Ошибка: ${err}`))
       .finally(() => {
@@ -121,15 +130,8 @@ const cardAddPopup = new PopupWithForm(".popup_place_card-add", {
   },
 });
 
-// создать экземпляр Section
-const elementsList = new Section(
-  {
-    renderer: (item) => renderCard(item),
-  },
-  ".elements"
-);
 
-elementsList.renderItems(api.getInitialCards());
+
 
 // создать экземпляр UserInfo
 const userInfo = new UserInfo({
