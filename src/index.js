@@ -1,4 +1,3 @@
-
 import Section from "./components/Section.js";
 import Card from "./components/Card.js";
 import PopupWithImage from "./components/PopupWithImage.js";
@@ -64,7 +63,21 @@ const profilePopup = new PopupWithForm(".popup_place_edit", {
     profileValidator.clearValidationErrors();
     profileValidator.toggleButtonState();
   },
-})
+});
+
+const deletePopup = new PopupDeleteCard(".popup_place_delete", {
+  handleFormSubmit: (evt) => {
+    evt.preventDefault();
+    api
+      .deleteCard(deletePopup._id)
+      .then(() => deletePopup.card.remove())
+
+      .catch((err) => console.log(err))
+      .finally(() => {
+        deletePopup.close();
+      });
+  },
+});
 
 // создание карточки
 function renderCard(item) {
@@ -76,24 +89,9 @@ function renderCard(item) {
         const popupWithImage = new PopupWithImage(".popup_place_pic", item);
         popupWithImage.open();
       },
-      handleCardDelete: ({ callback }) => {
-        const deletePopup = new PopupDeleteCard(".popup_place_delete", {
-          handleFormSubmit: (evt) => {
-            evt.preventDefault();
-            console.log(item._id)
-            api
-              .deleteCard(item._id)
-              .then(() => callback())
-              .catch((err) => console.log(err))
-              .finally(() => {
-                deletePopup.close();
-              
-              });
-          },
-        });
-        deletePopup.open();
-      },
+      handleCardDelete: (id, card) => deletePopup.open(id, card),
     },
+
     myId,
     api
   ).generateCard();
@@ -106,15 +104,14 @@ const cardAddPopup = new PopupWithForm(".popup_place_card-add", {
     cardAddPopup.renderLoading(true);
     api
       .addNewCard(cardAddPopup._getInputValues())
-      .then((data) => {
-        const card = renderCard(data);
+      .then((item) => {
+        const card = renderCard(item);
         elementsList.addItem(card);
       })
       .catch((err) => console.log(`Ошибка: ${err}`))
       .finally(() => {
         cardAddPopup.renderLoading(false);
         cardAddPopup.close();
-        
       });
   },
   inputValues: () => {},
@@ -123,8 +120,6 @@ const cardAddPopup = new PopupWithForm(".popup_place_card-add", {
     addCardValidator.toggleButtonState();
   },
 });
-
-
 
 // создать экземпляр Section
 const elementsList = new Section(

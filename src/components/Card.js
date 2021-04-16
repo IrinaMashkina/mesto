@@ -50,9 +50,7 @@ export default class Card {
   _setEventListeners() {
     this._element
       .querySelector(".card__delete")
-      .addEventListener("click", () =>
-        this.handleCardDelete({ callback: () => this._handleDelete() })
-      );
+      .addEventListener("click", () => this.handleCardDelete(this._id, this._element));
 
     this._element.querySelector(".card__like").addEventListener("click", () => {
       this._handleCardLike();
@@ -63,21 +61,11 @@ export default class Card {
         this.handleCardClick();
       });
   }
-  // _removeEventListeners() {
-  //   this._element.querySelector(".card__delete").removeEventListener(
-  //     "click",
-  //     () => {
-  //       this.handleCardDelete({ callback: () => this._handleDelete()})
-  //     },
-  //     { once: true }
-  //   );
-  // }
 
-  // удаление карточки
-  _handleDelete() {
-    this._element.remove();
-    // this._removeEventListeners()
-  }
+  // // удаление карточки
+  // _handleDelete() {
+  //   this.handleCardDelete(this._id, this._element)
+  // }
   //   Лайк
   _handleCardLike() {
     const likeButton = this._element.querySelector(".card__like");

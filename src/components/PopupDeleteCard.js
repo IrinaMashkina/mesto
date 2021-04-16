@@ -11,7 +11,9 @@ export default class PopupDeleteCard extends Popup {
         super.setEventListeners();
         this._element.querySelector('.popup__submit_place_delete').addEventListener('click', this.handleFormSubmit);
     }
-    open() {
+    open(id, card) {
+        this._id = id;
+        this.card = card;
         super.open();
         this.setEventListeners();
     }
