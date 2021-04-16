@@ -17,6 +17,7 @@ export default class Card {
     this.myId = myId;
     this._id = data._id;
     this._api = api;
+    this.card=data;
     
   }
   // получение темплэйт карточки
@@ -33,6 +34,7 @@ export default class Card {
     this._setEventListeners();
     this._countLikes = this._element.querySelector(".card__likes-count");
     this._countLikes.textContent = this._likes.length;
+    this._element.setAttribute("id", this._id);
     const pic = this._element.querySelector(".card__image");
     pic.src = this._image;
     pic.alt = this._alt;
@@ -50,7 +52,7 @@ export default class Card {
     this._element.querySelector(".card__delete").addEventListener(
       "click",
       () => {
-        this.handleCardDelete({ callback: () => this._handleDelete})
+        this.handleCardDelete({ callback: () => this._handleDelete()})
         
       },
       { once: true }
@@ -65,20 +67,20 @@ export default class Card {
         this.handleCardClick();
       });
   }
-  _removeEventListeners() {
-    this._element.querySelector(".card__delete").removeEventListener(
-      "click",
-      () => {
-        this.handleCardDelete({ callback: () => this._handleDelete})
-      },
-      { once: true }
-    );
-  }
+  // _removeEventListeners() {
+  //   this._element.querySelector(".card__delete").removeEventListener(
+  //     "click",
+  //     () => {
+  //       this.handleCardDelete({ callback: () => this._handleDelete()})
+  //     },
+  //     { once: true }
+  //   );
+  // }
 
   // удаление карточки
   _handleDelete() {
-    this._element.closest(".card").remove();
-    this._removeEventListeners()
+    this._element.remove();
+    // this._removeEventListeners()
   }
   //   Лайк
   _handleCardLike() {

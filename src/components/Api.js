@@ -1,5 +1,3 @@
-// import { data } from "autoprefixer";
-
 export default class Api {
   constructor({ baseUrl, headers }) {
     this._URL = baseUrl;
@@ -36,12 +34,11 @@ export default class Api {
     return fetch(`${this._URL}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) => {
-      if(res.ok) {
-        return res.json();
-      } 
-      return Promise.reject(`Ошибка: ${res.status}`)
-    });
+    }).then((response) =>
+      response.ok
+        ? Promise.resolve("success")
+        : Promise.reject(`Ошибка: ${response.status}`)
+    );
   }
 
   editUserInfo(data) {
@@ -69,7 +66,6 @@ export default class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
-
   putLike(id) {
     return fetch(`${this._URL}/cards/likes/${id}`, {
       method: "PUT",
@@ -108,4 +104,5 @@ export default class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
     })
   }
+
 }

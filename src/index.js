@@ -1,3 +1,4 @@
+
 import Section from "./components/Section.js";
 import Card from "./components/Card.js";
 import PopupWithImage from "./components/PopupWithImage.js";
@@ -78,13 +79,14 @@ function renderCard(item) {
         const deletePopup = new PopupDeleteCard(".popup_place_delete", {
           handleFormSubmit: (evt) => {
             evt.preventDefault();
-            console.log(item);
+            console.log(item._id)
             api
               .deleteCard(item._id)
               .then(() => callback())
               .catch((err) => console.log(err))
               .finally(() => {
                 deletePopup.close();
+              
               });
           },
         });
