@@ -2,7 +2,7 @@ export default class Card {
   constructor(
     card,
     { selector, handleCardClick, handleCardDelete },
-    myId,
+    myInfo,
     api
   ) {
     this._image = card.link;
@@ -12,7 +12,7 @@ export default class Card {
     this.handleCardClick = handleCardClick;
     this.handleCardDelete = handleCardDelete;
     this.owner = card.owner._id;
-    this.myId = myId;
+    this.myId = myInfo._id;
     this._id = card._id;
     this._api = api;
     this.card = card;

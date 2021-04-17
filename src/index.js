@@ -8,7 +8,6 @@ import Api from "./components/Api.js";
 import PopupDeleteCard from "./components/PopupDeleteCard.js";
 import PopupWithAvatar from "./components/PopupWithAvatar.js";
 import {
-  myId,
   nameInput,
   jobInput,
   editProfileButton,
@@ -21,6 +20,8 @@ import {
 } from "./utils/constants.js";
 
 import "./pages/index.css";
+
+let myInfo;
 
 // Запуск валидации
 const profileValidator = new FormValidator(options, profilePopupEl);
@@ -46,13 +47,15 @@ const profilePopup = new PopupWithForm(".popup_place_edit", {
     profilePopup.renderLoading(true);
     api
       .editUserInfo(profilePopup._getInputValues())
-      .then(userInfo.setUserInfo(profilePopup._getInputValues()))
+      .then(() => {
+        userInfo.setUserInfo(profilePopup._getInputValues());
+        nameInput.value = "";
+        jobInput.value = "";
+      })
       .catch((err) => console.log(err))
       .finally(() => {
         profilePopup.renderLoading(false);
         profilePopup.close();
-        nameInput.value = "";
-        jobInput.value = "";
       });
   },
   inputValues: () => {
@@ -65,6 +68,7 @@ const profilePopup = new PopupWithForm(".popup_place_edit", {
   },
 });
 
+// экземпляр попапа удаления карточки
 const deletePopup = new PopupDeleteCard(".popup_place_delete", {
   handleFormSubmit: (evt) => {
     evt.preventDefault();
@@ -79,14 +83,13 @@ const deletePopup = new PopupDeleteCard(".popup_place_delete", {
   },
 });
 
-// создать экземпляр Section
+// экземпляр Section
 const cardList = new Section(
   {
     renderer: (item) => renderCard(item),
   },
   ".elements"
 );
-cardList.renderItems(api.getInitialCards());
 
 // создание карточки
 function renderCard(item) {
@@ -101,11 +104,12 @@ function renderCard(item) {
       handleCardDelete: (id, card) => deletePopup.open(id, card),
     },
 
-    myId,
+    myInfo,
     api
   ).generateCard();
   return newCard;
 }
+
 // экземпляр PopupWithForm для попапа добавления новых карточек
 const cardAddPopup = new PopupWithForm(".popup_place_card-add", {
   handleFormSubmit: (evt) => {
@@ -115,7 +119,7 @@ const cardAddPopup = new PopupWithForm(".popup_place_card-add", {
       .addNewCard(cardAddPopup._getInputValues())
       .then((item) => {
         cardList.addItem(renderCard(item));
-        console.log(item)
+        console.log(item);
       })
       .catch((err) => console.log(`Ошибка: ${err}`))
       .finally(() => {
@@ -130,22 +134,12 @@ const cardAddPopup = new PopupWithForm(".popup_place_card-add", {
   },
 });
 
-
-
-
-// создать экземпляр UserInfo
+// экземпляр UserInfo
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__profession",
   avatarSelector: ".profile__avatar-container",
 });
-
-api
-  .getUserInfo()
-  .then((data) => {
-    userInfo.setUserInfo(data);
-  })
-  .catch((err) => console.log(`Ошибка ${err}`));
 
 // Создать экземпляр попапа смены аватарки
 const avatarPopup = new PopupWithAvatar(".popup_place_avatar", {
@@ -179,3 +173,13 @@ addButton.addEventListener("click", () => {
 editAvatar.addEventListener("click", () => {
   avatarPopup.open();
 });
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, initialCards]) => {
+    myInfo = userData;
+    userInfo.setUserInfo(myInfo);
+    cardList.renderItems(initialCards);
+  })
+  .catch((err) => {
+    console.log(err);
+  });

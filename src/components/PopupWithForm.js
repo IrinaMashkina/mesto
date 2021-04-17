@@ -35,7 +35,6 @@ export default class PopupWithForm extends Popup {
     super.open();
     this._validator();
     this._inputValues();
-    this._getInputValues();
     this.setEventListeners();
   }
 

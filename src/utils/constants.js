@@ -1,6 +1,6 @@
 
 export const CLOSE_KEY_CODE = 27;
-export const myId = '3d322814f340315757a145a7';
+
 // попап добавления новых карточек
 export const cardAddPopupEl = document.querySelector('.popup_place_card-add');
 // кнопка открытия попапа добавления новых карточек

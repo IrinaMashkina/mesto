@@ -4,14 +4,10 @@ export default class Section {
     this._container = document.querySelector(containerSelector);
   }
 
-  renderItems(api) {
-    api
-      .then((data) => {
-        data.forEach((item) => {
-          this.addItem(this._renderer(item));
-        });
-      })
-      .catch((err) => console.log(`Ошибка: ${err}`));
+  renderItems(cards) {
+    cards.forEach((item) => {
+      this.addItem(this._renderer(item));
+    });
   }
 
   addItem(element) {
