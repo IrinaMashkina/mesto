@@ -12,13 +12,15 @@ export default class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
+    // return fetch(`${this._baseUrl}/cards`, {
+      return fetch("https:/mesto.nomoreparties.co/v1/cohort-22/cards", {
       headers: this._headers,
     }).then(this.handleResponse);
   }
 
   addNewCard(data) {
-    return fetch(`${this._baseUrl}/cards`, {
+    // return fetch(`${this._baseUrl}/cards`, {
+      return fetch("https:/mesto.nomoreparties.co/v1/cohort-22/cards", {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
@@ -36,7 +38,8 @@ export default class Api {
   }
 
   editUserInfo(data) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    // return fetch(`${this._baseUrl}/users/me`, {
+      return fetch("https:/mesto.nomoreparties.co/v1/cohort-22/users/me", {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -47,13 +50,15 @@ export default class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    // return fetch(`${this._baseUrl}/users/me`, {
+      return fetch("https:/mesto.nomoreparties.co/v1/cohort-22/users/me", {
       headers: this._headers,
     }).then(this.handleResponse);
   }
 
   putLike(id) {
-    return fetch(`${this._baseUrl}/cards/likes/${id}`, {
+    // return fetch(`${this._baseUrl}/cards/likes/${id}`, {
+      return fetch("https:/mesto.nomoreparties.co/v1/cohort-22/cards/likes", {
       method: "PUT",
       headers: this._headers,
     }).then(this.handleResponse);
@@ -67,7 +72,8 @@ export default class Api {
   }
 
   editAvatar(link) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    // return fetch(`${this._baseUrl}/users/me/avatar`, {
+      return fetch("https:/mesto.nomoreparties.co/v1/cohort-22/users/me/avatar", {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
